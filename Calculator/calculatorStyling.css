@@ -1,0 +1,69 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+body{
+    padding: 0;
+    margin: 0;
+    /*this is a linear gradient transition thing, left:red, right:purple*/
+    background: linear-gradient(to right, red, purple)
+}
+.calculator-grid{
+    /*defines the element as a grid, so a different formatting context is apllied*/
+    display: grid;
+    /*Aligns items along the main axis of the current line of the flex container.*/
+    justify-content: center;
+    /*aligning all the content to the center, and not the grid itself*/
+    align-content: center;
+    /*going to fill 100% of the height all the time*/
+    min-height: 100vh;
+    /*columns will repeat 4 times, each 100 px wide*/
+    grid-template-columns: repeat(4, 100px);
+    /*minmax makes it so that at minimum, 120px is the length, but auto adjust to how long the number will be*/
+    /*rows repeat 5 times the value of 100px*/
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+.calculator-grid > button{
+    /*making it so that the curser is a pointer when hovering over the button*/
+    cursor: pointer;
+    border: 1px solid gray;
+    outline: none;
+    background-color: rgba(32, 178, 170);
+}
+/*when hovering over any buttons, the opacity of the background becomes 90%*/
+.calculator-grid > button:hover{
+    background-color: rgba(32,178,170, .9);
+}
+.span-two{
+    grid-column: span 2;
+}
+.output{
+    /*spans the output from the first to the last column*/
+    grid-column: 1/-1;
+    background-color: rgba(0,0,0,.65);
+    color: rgb(255, 255, 255);
+    text-align: right;
+    /*flex layout*/
+    display: flex;
+    align-items: flex-end;
+    /*creating as much space around the contents as possible*/
+    justify-content: space-around;
+    /*putting the elements on a column*/
+    flex-direction: column;
+
+    padding: 10px;
+    /*allows us to break a word at a point in a word*/
+    /*break-word means in the middle of the word*/
+    word-wrap: break-word;
+    /*word-break with  break-all allows us to break all the words*/
+    word-break: break-all;
+}
+/*color and size for previous and current operands*/
+.output .previous-operand{
+    color: rgba(255, 255, 255, .65);
+    font-size: 15px;
+}
+.output .current-operand{
+    color: rgba(255, 255, 255);
+    font-size: 40px;
+}
